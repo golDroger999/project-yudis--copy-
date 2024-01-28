@@ -52,7 +52,7 @@ def main():
     
     note_form = st.text_area('Note')
     
-    st.write('')
+    st.write('---------------------------')
     col1,col2 = st.columns(2) 
     with col1:
         with st.expander('FORM INPUT'):
@@ -79,13 +79,13 @@ def main():
             status_sha5_checksum = st.selectbox("Status SHA5 Checksum", ('verified', "match"))
             status_jumlah_temuan = st.selectbox("Status Jumlah Temuan", ('verified', "match"))
             status_jenis_temuan = st.selectbox("Status Jenis Temuan", ('verified', "match"))  
-    st.write('')         
+    st.write('---------------------------')         
     if st.button('buat laporan'):
         generate_word_document(drive_model, drive_serial_number,  source_data_size, sector_count,
                            md5_checksum, sha5_checksum, jumlah_temuan, jenis_temuan, status_drive_model, status_drive_serial_number,
                            status_source_data_size, status_sector_count, status_md5_checksum, status_sha5_checksum, status_jumlah_temuan, status_jenis_temuan)
         
-        st.write('')
+        st.write('---------------------------')
         with open('generate.docx', 'rb') as f:
             st.download_button(label='Download Generated Document',
                                 data=f,
