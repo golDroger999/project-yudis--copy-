@@ -1,6 +1,6 @@
 import streamlit as st
 from docxtpl import DocxTemplate
-st.set_page_config (layout="wide")
+# st.set_page_config (layout="wide")
 
 doc = DocxTemplate("template/template.docx")
 def generate_word_document(drive_model, 
