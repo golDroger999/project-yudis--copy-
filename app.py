@@ -44,11 +44,11 @@ def generate_word_document(drive_model,
 def main():
     st.subheader("PROJECT YUDIS")
     colname, coldate= st.columns(2)
-    with colname:
-        nama_form = st.text_input('Document Name')
-        
-    with coldate:
-        date_form = st.date_input('Date Input')
+    # with colname:
+    nama_form = st.text_input('Document Name')
+    date_form = st.date_input('Date Input')
+    # with coldate:
+        # date_form = st.date_input('Date Input')
     
     note_form = st.text_area('Note')
     
