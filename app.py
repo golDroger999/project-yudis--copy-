@@ -18,7 +18,10 @@ def generate_word_document(drive_model,
                            status_md5_checksum,
                            status_sha5_checksum,
                            status_jumlah_temuan,
-                           status_jenis_temuan):
+                           status_jenis_temuan,
+                           nama_form,
+                           date_form,
+                           note_form):
     context ={
         'drive_model': drive_model,
         'drive_serial_number':drive_serial_number,
@@ -36,7 +39,10 @@ def generate_word_document(drive_model,
         'status_md5_checksum' : status_md5_checksum,
         'status_sha5_checksum' :status_sha5_checksum,
         'status_jumlah_temuan': status_jumlah_temuan,
-        'status_jenis_temuan': status_jenis_temuan
+        'status_jenis_temuan': status_jenis_temuan,
+        'nama_form' : nama_form, 
+        'date_form' : date_form,
+        'note_form' : note_form 
     }
     doc.render(context=context)
     doc.save('generate.docx')
@@ -83,16 +89,17 @@ def main():
     if st.button('buat laporan'):
         generate_word_document(drive_model, drive_serial_number,  source_data_size, sector_count,
                            md5_checksum, sha5_checksum, jumlah_temuan, jenis_temuan, status_drive_model, status_drive_serial_number,
-                           status_source_data_size, status_sector_count, status_md5_checksum, status_sha5_checksum, status_jumlah_temuan, status_jenis_temuan)
+                           status_source_data_size, status_sector_count, status_md5_checksum, status_sha5_checksum, status_jumlah_temuan, status_jenis_temuan,
+                           nama_form, date_form)
         
         st.write('---------------------------')
         with open('generate.docx', 'rb') as f:
             st.download_button(label='Download Generated Document',
                                 data=f,
-                                file_name=f'laporan.docx',
+                                file_name=f'laporan {nama_form}.docx',
                                 mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document')  
             
-        st.success('LAPORAN BERHASIL ')
+        st.success('LAPORAN BERHASIL DIBUAT')
 
 if __name__ == "__main__":
     main()
